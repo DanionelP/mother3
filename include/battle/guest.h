@@ -75,6 +75,7 @@ public:
     u16 _fa;
     CharStats* mStats;
     const LevelStats* mLevelInfo;
+    u32 unk_104;
 };
 
 extern "C" {

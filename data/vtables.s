@@ -11413,7 +11413,7 @@ _vt.6Fassad::
 	.4byte _110__6Fassad
 	.2byte 0
 	.2byte 0
-	.4byte _118__6Fassad
+	.4byte _118__6FassadUib
 
 _vt.4Wess.10UnitObject::
 	.2byte -32

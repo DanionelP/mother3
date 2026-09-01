@@ -8,6 +8,9 @@
 #include "global.h"
 #include "singleton.h"
 
+extern "C" s32 randomMT();
+extern "C" s32 randS32_();
+extern "C" s32 Div(s32, s32);
 extern "C" s32 DivMod(s32, s32);
 
 extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_080703A4.inc", void sub_080703A4());
@@ -16,9 +19,15 @@ extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_08070478.inc", void su
 extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_08070578.inc", void sub_08070578());
 extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_0807058C.inc", void sub_0807058C());
 extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_080705A4.inc", void sub_080705A4());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_08070654.inc", void sub_08070654());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/randS32.inc", void randS32());
-extern "C" ASM_FUNC("asm/non_matching/keyfocusmanager/sub_0807066C.inc", void sub_0807066C());
+
+extern "C" s32 sub_08070654() { return randomMT(); }
+
+extern "C" s32 randS32() { return randS32_(); }
+
+extern "C" s32 sub_0807066C(s32 a, s32 b) {
+    if (b == 0) return a;
+    return Div(a, b);
+}
 
 extern "C" s32 Remainder(s32 a, s32 b) {
     if (b != 0) {
