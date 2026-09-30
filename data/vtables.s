@@ -11395,7 +11395,7 @@ _vt.6Fassad::
 	.4byte imposter_object_38__5Guest
 	.2byte 0
 	.2byte 0
-	.4byte _e8__6Fassad
+	.4byte _e8__6FassadP6Fassad
 	.2byte 0
 	.2byte 0
 	.4byte _f0__12DefaultGuest

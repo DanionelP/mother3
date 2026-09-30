@@ -27,8 +27,13 @@ public:
 }
     virtual ~DefaultGuest();
     u32 _100();
+    virtual void _2e8();
     virtual void _2f0();
     virtual void _2f8(u32);
+    virtual s32 _300();
+    virtual Action* _308();
+    virtual Action* _310();
+    virtual void _318(bool, bool);
 
 };
 
@@ -37,39 +42,55 @@ public:
     Wess(u16 id);
     virtual ~Wess();
 
-    u32 unk_108;
+    bool onAction(Action*);
+    Action* _108();
+    Action* _110();
+    Action* guest_2c0();
+    s32 unk_108;
+    s32 unk_10C;
 };
 class Thomas : public DefaultGuest {
 public:
     Thomas(u16 id);
     virtual ~Thomas();
+
+    Action* guest_2c0();
 };
 class Ionia : public DefaultGuest {
 public:
     Ionia(u16 id);
     virtual ~Ionia();
+
+    Action* guest_2c0();
 };
 class Fuel : public DefaultGuest {
 public:
     Fuel(u16 id);
     virtual ~Fuel();
+
+    Action* guest_2c0();
 };
 class Alec : public DefaultGuest {
 public:
     Alec(u16 id);
     virtual ~Alec();
 
-    u32 unk_108;
-    u32 unk_10C;
+    s32 unk_108;
+    s32 unk_10C;
 };
 class Fassad : public DefaultGuest {
 public:
     Fassad(u16 id);
     virtual ~Fassad();
 
+
+    Action* guest_2c0();
+    void _e8(Fassad*);
+    Action* _108();
+    Action* _110();
     bool _118(u32, bool);
-    u32 unk_108;
-    u32 unk_10C;
+    s32 unk_108;
+    s32 unk_10C;
 };
 
 class GuestFactory {
