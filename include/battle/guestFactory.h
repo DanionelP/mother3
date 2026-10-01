@@ -26,7 +26,13 @@ public:
     };
 }
     virtual ~DefaultGuest();
+    bool onAction(Action*);
+
+    void _e8();
+    void _f0();
+    void _f8(u32);
     u32 _100();
+
     virtual void _2e8();
     virtual void _2f0();
     virtual void _2f8(u32);
@@ -74,6 +80,13 @@ class Alec : public DefaultGuest {
 public:
     Alec(u16 id);
     virtual ~Alec();
+
+    
+    Action* guest_2c0();
+    bool onAction(Action*);
+    virtual Action* _108();
+    virtual Action* _110();
+    virtual void _118(bool, bool);
 
     s32 unk_108;
     s32 unk_10C;

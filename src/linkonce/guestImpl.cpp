@@ -5,8 +5,10 @@
 
 extern "C" Action* getGuestSkill(u16, Unit*);
 extern "C" Player* sub_08072AC4(u16);
+extern "C" Monster* sub_08072E38(u16);
 extern "C" bool sub_08074160(Action*, u32);
 extern "C" Monster* GetMonster(s32);
+extern "C" bool sub_08072648(u16);
 
 extern "C" ASM_FUNC("asm/non_matching/guestImpl/init__9GuestRTTI.inc", void init__9GuestRTTI());
 extern "C" ASM_FUNC("asm/non_matching/guestImpl/getName__9GuestRTTI.inc", void getName__9GuestRTTI());
@@ -147,24 +149,23 @@ void Fassad::_e8(Fassad* arg) {
 
 extern "C" ASM_FUNC("asm/non_matching/guestImpl/dt__6Fassad.inc", void dt__6Fassad());
 
-NONMATCH("asm/non_matching/guestImpl/onAction__4WessP6Action.inc", bool Wess::onAction(Action* action)) {
+bool Wess::onAction(Action* action) {
     bool res;
-    if (Unit::onAction(action) == true) {
+    bool t = false;
+
+    if (Unit::onAction(action) != true) {
+        res = false;
+    } else {
         this->unk_104++;
         res = true;
     }
 
-    if (res == false) {
-        return false;
-    }
+    if (res == t) { return false; }
 
-    if (sub_08074160(action, 0x15) == true) {
-        this->unk_108++;
-    }
+    if (sub_08074160(action, 0x15) == true) { this->unk_108++; }
 
     return true;
 }
-END_NONMATCH
 
 
 Action* Wess::_108() {
@@ -209,10 +210,76 @@ Action* Wess::guest_2c0() {
 }
 
 extern "C" ASM_FUNC("asm/non_matching/guestImpl/dt__4Wess.inc", void dt__4Wess());
-extern "C" ASM_FUNC("asm/non_matching/guestImpl/sub_080A0758.inc", void sub_080A0758());
-extern "C" ASM_FUNC("asm/non_matching/guestImpl/_110__4Alec.inc", void _110__4Alec());
-extern "C" ASM_FUNC("asm/non_matching/guestImpl/_108__4Alec.inc", void _108__4Alec());
-extern "C" ASM_FUNC("asm/non_matching/guestImpl/guest_2c0__4Alec.inc", void guest_2c0__4Alec());
+
+bool Alec::onAction(Action* action) {
+    bool res;
+    bool t = false;
+
+    if (Unit::onAction(action) != true) {
+        res = false;
+    } else {
+        this->unk_104++;
+        res = true;
+    }
+
+    if (res == t) { return false; }
+
+    if (sub_08074160(action, 0x10) == true) { this->unk_108++; }
+    else if (sub_08074160(action, 0x11) == true) { this->unk_10C++; }
+
+    return true;
+}
+
+Action* Alec::_110() {
+    Monster* monster = sub_08072E38(5);
+
+    if (monster == NULL) { return this->_308(); }
+
+    u16 skill_id;
+
+    if (this->_300() <= 0) { skill_id = 13; } 
+    else if (monster->getElementWeakness(0) > 0) { return this->_308(); }
+    else { skill_id = 18; }
+
+    return getGuestSkill(skill_id, this);
+}
+
+Action* Alec::_108() {
+    Player* target = sub_08072AC4(Player::Flint);
+
+    if (target == NULL) { return NULL; }
+
+    if (target->hasStatus(Status::Sleep) == true && randS32(0, 99) <= 69) {
+        return getGuestSkill(19, this);
+    }
+
+    if (target->hpReal() <= 19) {
+        if (this->unk_108 <= 2) { return getGuestSkill(16, this); }
+        if (this->unk_108 == 3 && this->unk_10C <= 0) { return getGuestSkill(17, this); }
+    }
+
+    u16 prob1 = 33;
+    u16 prob2 = 66;
+    u16 val;
+    s32 rng = randS32_(0, 99);
+
+    val = 13;
+
+    if (rng >= prob1) {
+        val = 15;
+        if (rng < prob2) {
+            val = 14;
+        }
+    }
+    return getGuestSkill(val, this);
+}
+
+
+Action* Alec::guest_2c0() {
+    if (sub_08072648(4) == true) { return this->_310(); } 
+    else { return this->_308(); }
+}
+
 extern "C" ASM_FUNC("asm/non_matching/guestImpl/dt__4Alec.inc", void dt__4Alec());
 
 Action* Fuel::guest_2c0() {
@@ -261,8 +328,22 @@ extern "C" ASM_FUNC("asm/non_matching/guestImpl/dt__6Thomas.inc", void dt__6Thom
 
 u32 DefaultGuest::_100() { return this->unk_104; }
 
-extern "C" ASM_FUNC("asm/non_matching/guestImpl/_f8__12DefaultGuest.inc", void _f8__12DefaultGuest());
-extern "C" ASM_FUNC("asm/non_matching/guestImpl/onAction__12DefaultGuestP6Action.inc", void onAction__12DefaultGuestP6Action());
-extern "C" ASM_FUNC("asm/non_matching/guestImpl/_f0__12DefaultGuest.inc", void _f0__12DefaultGuest());
-extern "C" ASM_FUNC("asm/non_matching/guestImpl/_e8__12DefaultGuest.inc", void _e8__12DefaultGuest());
+void DefaultGuest::_f8(u32 arg) { this->unk_104 = arg; }
+
+bool DefaultGuest::onAction(Action* action) {
+    bool res;
+    
+    if (Unit::onAction(action) == true) {
+        this->unk_104++;
+        res = true;
+    } else {
+        res = false;
+    }
+    return res;
+}
+
+void DefaultGuest::_f0() {}
+
+void DefaultGuest::_e8() {}
+
 extern "C" ASM_FUNC("asm/non_matching/guestImpl/dt__12DefaultGuest.inc", void dt__12DefaultGuest());

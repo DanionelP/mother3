@@ -11061,7 +11061,7 @@ _vt.5Ionia::
 	.4byte _f0__12DefaultGuest
 	.2byte 0
 	.2byte 0
-	.4byte _f8__12DefaultGuest
+	.4byte _f8__12DefaultGuestUi
 	.2byte 0
 	.2byte 0
 	.4byte _100__12DefaultGuest
@@ -11401,7 +11401,7 @@ _vt.6Fassad::
 	.4byte _f0__12DefaultGuest
 	.2byte 0
 	.2byte 0
-	.4byte _f8__12DefaultGuest
+	.4byte _f8__12DefaultGuestUi
 	.2byte 0
 	.2byte 0
 	.4byte _100__12DefaultGuest
@@ -11750,7 +11750,7 @@ _vt.4Wess::
 	.4byte _f0__12DefaultGuest
 	.2byte 0
 	.2byte 0
-	.4byte _f8__12DefaultGuest
+	.4byte _f8__12DefaultGuestUi
 	.2byte 0
 	.2byte 0
 	.4byte _100__12DefaultGuest
@@ -11850,7 +11850,7 @@ _vt.4Alec::
 	.4byte dispStatusMsg__4Unit
 	.2byte 0
 	.2byte 0
-	.4byte sub_080A0758
+	.4byte onAction__4AlecP6Action
 	.2byte 0
 	.2byte 0
 	.4byte unit_78__4UnitP6Action
@@ -12093,7 +12093,7 @@ _vt.4Alec::
 	.4byte _f0__12DefaultGuest
 	.2byte 0
 	.2byte 0
-	.4byte _f8__12DefaultGuest
+	.4byte _f8__12DefaultGuestUi
 	.2byte 0
 	.2byte 0
 	.4byte _100__12DefaultGuest
@@ -12439,7 +12439,7 @@ _vt.4Fuel::
 	.4byte _f0__12DefaultGuest
 	.2byte 0
 	.2byte 0
-	.4byte _f8__12DefaultGuest
+	.4byte _f8__12DefaultGuestUi
 	.2byte 0
 	.2byte 0
 	.4byte _100__12DefaultGuest
@@ -12779,7 +12779,7 @@ _vt.6Thomas::
 	.4byte _f0__12DefaultGuest
 	.2byte 0
 	.2byte 0
-	.4byte _f8__12DefaultGuest
+	.4byte _f8__12DefaultGuestUi
 	.2byte 0
 	.2byte 0
 	.4byte _100__12DefaultGuest
@@ -13119,7 +13119,7 @@ _vt.12DefaultGuest::
 	.4byte _f0__12DefaultGuest
 	.2byte 0
 	.2byte 0
-	.4byte _f8__12DefaultGuest
+	.4byte _f8__12DefaultGuestUi
 	.2byte 0
 	.2byte 0
 	.4byte _100__12DefaultGuest
