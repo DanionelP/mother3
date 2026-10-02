@@ -1,5 +1,5 @@
 #include "global.h"
-#include "battle/guestFactory.h"
+#include "battle/guestImpl.h"
 #include "battle/monster.h"
 #include "battle/player.h"
 
